@@ -1,0 +1,28 @@
+package main.java;
+
+public class Paciente implements Comparable<Paciente> {
+    private String nombre;
+    private String sintoma;
+    private String codigoEmergencia;
+
+    public Paciente(String nombre, String sintoma, String codigoEmergencia) {
+        this.nombre = nombre.trim();
+        this.sintoma = sintoma.trim();
+        this.codigoEmergencia = codigoEmergencia.trim();
+    }
+
+    public String getNombre() { return nombre; }
+    public String getSintoma() { return sintoma; }
+    public String getCodigoEmergencia() { return codigoEmergencia; }
+
+    @Override
+    public int compareTo(Paciente otro) {
+        // Compara los códigos de emergencia ('A' tiene mayor prioridad que 'B', etc.)
+        return this.codigoEmergencia.compareTo(otro.getCodigoEmergencia());
+    }
+
+    @Override
+    public String toString() {
+        return nombre + ", " + sintoma + ", " + codigoEmergencia;
+    }
+}
